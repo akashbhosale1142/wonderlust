@@ -32,7 +32,6 @@ module.exports.createListing = async (req, res, next) => {
       limit: 1,
     })
     .send();
-
   let url = req.file.path;
   let filename = req.file.filename;
   console.log(url, "..", filename);
