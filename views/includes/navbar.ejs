@@ -40,13 +40,22 @@
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
       </div>
-      <!-- <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search destination">
-          <button class="btn search-btn  my-sm-0 d-flex " type="submit"><i class="fa-solid fa-magnifying-glass d-flex"></i> Search</button>
+      <div class="navbar-nav ms-auto me-3">
+        <form class="d-flex" action="/listings" method="GET" role="search">
+          <input
+            class="form-control me-2 search-input"
+            type="search"
+            name="search"
+            placeholder="Search destinations"
+            value="<%= typeof searchTerm !== 'undefined' ? searchTerm : '' %>"
+            aria-label="Search"
+          />
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </form>
-      </div> -->
-      <div class="navbar-nav ms-auto">
+      </div>
+      <div class="navbar-nav">
         <a class="nav-link" href="/listings/new">Add New Listing</a>
         <% if(!currUser) { %>
         <a class="nav-link" href="/signup"><b>SignUp</b></a>
