@@ -1,6 +1,40 @@
 <% layout('/layouts/boilerplate') -%>
 
 <style>
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 1rem;
+  }
+
+  .search-bar input[type="search"] {
+    width: 320px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 999px 0 0 999px;
+    outline: none;
+  }
+
+  .search-bar button {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 999px 999px 0;
+    background: #2a75f3;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .search-bar button:hover {
+    background: #1f5bcd;
+  }
+
+  .search-summary {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+
   .filter{
     text-align: center;
     margin-right: 2rem;
@@ -39,6 +73,22 @@
 
 
 </style>
+<div class="search-bar">
+  <form action="/listings" method="GET">
+    <input
+      type="search"
+      name="search"
+      placeholder="Search listings by title, location, country, or description"
+      value="<%= typeof searchTerm !== 'undefined' ? searchTerm : '' %>"
+    />
+    <button type="submit">Search</button>
+  </form>
+</div>
+<% if (typeof searchTerm !== 'undefined' && searchTerm.length) { %>
+  <div class="search-summary">
+    Showing results for "<%= searchTerm %>" (<%= allListings.length %> listing<%= allListings.length === 1 ? '' : 's' %>)
+  </div>
+<% } %>
 <div id="filters">
   <div class="filter">
     <div><i class="fa-solid fa-fire"></i></div>
